@@ -90,6 +90,9 @@ body {
       display: none;
     }
     .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: #1a3c5e;
       color: white;
       padding: 20px;
@@ -105,6 +108,9 @@ body {
       margin-top: 12px;
     }
     .student-info-bar {
+      position: sticky;
+      top: 90px; /* Adjust based on header height */
+      z-index: 99;
       background: #e9edf2;
       padding: 12px 20px;
       display: flex;
