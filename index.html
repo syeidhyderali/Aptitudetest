@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admission Aptitude Test | 80 MCQs | 60 min</title>
   <style>
+    /* Floating timer animation */
+#floatingTimer {
+  transition: all 0.2s ease;
+  user-select: none;
+}
+#floatingTimer:hover {
+  transform: scale(1.05);
+  background: rgba(0,0,0,0.9);
+}
+/* Optional: if you want it to be draggable – extra JS needed */
     /* Animated gradient background - Deep Blue, Purple, Pink Fusion + Dissolve */
 body {
   background: linear-gradient(270deg, #0a0f2a, #2a1a4a, #5e2a6e, #d45c8c, #2a1a4a, #0a0f2a);
@@ -36,6 +46,10 @@ body {
       background: #eef2f7;
       padding: 20px;
     }
+    <!-- Floating Timer -->
+<div id="floatingTimer" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; font-size: 24px; font-weight: bold; padding: 12px 20px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; font-family: monospace; backdrop-filter: blur(4px); cursor: pointer;" title="Click to hide/show">
+  60:00
+</div>
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -242,7 +256,10 @@ body {
     "Business Aptitude", "Psychology", "Computer Knowledge",
     "Design Sense", "General Knowledge (Global)"
   ];
-
+document.getElementById('floatingTimer')?.addEventListener('click', function(e) {
+  this.style.opacity = (this.style.opacity === '0.3') ? '1' : '0.3';
+  // Or toggle display: none? Better to just reduce opacity.
+});
   // Full 80 questions (same as before – included but shortened for brevity; I'll include all 80)
   // For space, I'm pasting the full array from previous working version.
   // In your actual file, ensure all 80 are present.
@@ -390,6 +407,8 @@ body {
       } else {
         const mins = Math.floor(secondsLeft / 60);
         const secs = secondsLeft % 60;
+        const floatingTimer = document.getElementById('floatingTimer');
+if (floatingTimer) floatingTimer.innerText = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
         timerDisplayElem.innerText = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
       }
     }, 1000);
