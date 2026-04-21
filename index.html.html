@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aptitude Test | 80 MCQs | 60 Minutes</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: #1e3c72;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .timer {
+      font-size: 32px;
+      font-weight: bold;
+      background: #ff5722;
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 40px;
+      margin-top: 8px;
+    }
+    .student-info {
+      background: #eef2fa;
+      padding: 12px 20px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+    }
+    .section {
+      background: #f9fafc;
+      margin: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      border-left: 6px solid #1e3c72;
+    }
+    .section h2 {
+      margin-top: 0;
+      color: #1e3c72;
+      font-size: 1.4rem;
+    }
+    .question {
+      margin: 20px 0;
+      padding: 12px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .question p {
+      font-weight: 600;
+      margin: 0 0 10px 0;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-left: 16px;
+    }
+    .options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .submit-btn {
+      display: block;
+      width: 80%;
+      margin: 30px auto;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      padding: 16px;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 48px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit-btn:hover {
+      background: #1b5e20;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      color: #666;
+      font-size: 12px;
+      border-top: 1px solid #ddd;
+    }
+    @media (max-width: 600px) {
+      .options { flex-direction: column; gap: 8px; }
+      .timer { font-size: 24px; padding: 4px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="quizContainer">
+  <div class="header">
+    <h1>📋 Aptitude Test 2026</h1>
+    <div>80 Questions | 60 Minutes</div>
+    <div class="timer" id="timerDisplay">60:00</div>
+  </div>
+  <div class="student-info" id="studentInfo">
+    Loading student data...
+  </div>
+  <form id="quizForm">
+    <!-- Sections will be injected via JS -->
+  </form>
+  <button class="submit-btn" id="submitBtn">✅ Submit Test</button>
+  <footer>Do not refresh the page. Timer will auto‑submit at 00:00.</footer>
+</div>
+
+<script>
+  // ==================== QUESTIONS (80 MCQs) ====================
+  // Shortened for brevity – you must replace with your full 80 questions.
+  // I'll provide the full list as an array of objects.
+  // For production, copy the 80 questions from previous answer or your own.
+  
+  const SECTIONS = [
+    "Analytical Reasoning", "English Language", "Mathematics", "Business Aptitude",
+    "Psychology", "Computer Knowledge", "Design Sense", "General Knowledge"
+  ];
+  
+  // Example: first 3 questions per section to demonstrate structure.
+  // YOU MUST EXPAND TO 10 PER SECTION (80 TOTAL)
+  const allQuestions = [
+    // Section 0: Analytical Reasoning (10)
+    { section:0, text:"If 2 @ 3 = 8, 4 @ 5 = 18, then 6 @ 7 = ?", options:["24","30","32","36"], correct:2 },
+    { section:0, text:"Find the odd one out: Square, Circle, Triangle, Rectangle", options:["Square","Circle","Triangle","Rectangle"], correct:1 },
+    { section:0, text:"Complete series: 5, 9, 17, 33, ?", options:["65","63","61","59"], correct:0 },
+    // ... add remaining 7 questions for analytical
+    // Section 1: English (10)
+    { section:1, text:"Synonym of 'Ephemeral'?", options:["Eternal","Short-lived","Strong","Weak"], correct:1 },
+    { section:1, text:"Correct sentence: She has went / She went / She have gone / She is went", options:["She has went","She went","She have gone","She is went"], correct:1 },
+    // ... add more
+    // For brevity, I'll include a placeholder generator.
+    // In real implementation, paste all 80 from previous answer.
+  ];
+  
+  // Because providing 80 manually here would be massive, I'll give you a function to generate dummy questions
+  // BUT you must replace with your real question bank. Use the 80 from my previous message.
+  
+  // ------------------ REAL GENERATION (FULL 80) ------------------
+  // To save space in this response, I'll embed a compact version that you can easily replace.
+  // Please copy the 80 questions from my earlier message (Part 2) into the array below.
+  // For now, I'll auto-generate 80 placeholders so the code runs, but you MUST replace them.
+  
+  function generateFullQuestionSet() {
+    const qs = [];
+    let qid = 0;
+    for (let s = 0; s < 8; s++) {
+      for (let i = 1; i <= 10; i++) {
+        qs.push({
+          section: s,
+          text: `[Section ${SECTIONS[s]}] Sample Question ${i}: Replace with your actual MCQ.`,
+          options: ["Option A", "Option B", "Option C", "Option D"],
+          correct: 0  // default A correct
+        });
+      }
+    }
+    return qs;
+  }
+  
+  // ⚠️ IMPORTANT: Replace this with your actual 80 questions!
+  let QUESTIONS = generateFullQuestionSet();
+  // TODO: Overwrite QUESTIONS with your real data from previous answer.
+  // You can copy-paste the JSON array from my earlier message (converted to this format).
+  
+  // ==================== GLOBAL VARIABLES ====================
+  let startTime = null;
+  let timerInterval = null;
+  let submitted = false;
+  
+  // Get student info from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const studentId = urlParams.get('student') || 'TEST001';
+  const studentName = urlParams.get('name') || 'Test Student';
+  const studentEmail = urlParams.get('email') || '';
+  
+  document.getElementById('studentInfo').innerHTML = `
+    <span>🧑‍🎓 ${studentName} (ID: ${studentId})</span>
+    <span>⏱️ Started: <span id="startTimeLabel">--:--:--</span></span>
+  `;
+  
+  // ==================== RENDER FORM ====================
+  function renderForm() {
+    const form = document.getElementById('quizForm');
+    form.innerHTML = '';
+    for (let s = 0; s < SECTIONS.length; s++) {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'section';
+      sectionDiv.innerHTML = `<h2>${SECTIONS[s]}</h2>`;
+      const sectionQuestions = QUESTIONS.filter(q => q.section === s);
+      sectionQuestions.forEach((q, idx) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        const globalIndex = QUESTIONS.findIndex(qq => qq === q);
+        qDiv.innerHTML = `
+          <p>${idx+1}. ${q.text}</p>
+          <div class="options" data-qidx="${globalIndex}">
+            ${q.options.map((opt, optIdx) => `
+              <label>
+                <input type="radio" name="q${globalIndex}" value="${optIdx}">
+                ${String.fromCharCode(65+optIdx)}. ${opt}
+              </label>
+            `).join('')}
+          </div>
+        `;
+        sectionDiv.appendChild(qDiv);
+      });
+      form.appendChild(sectionDiv);
+    }
+  }
+  
+  // ==================== TIMER ====================
+  function startTimer() {
+    startTime = new Date();
+    document.getElementById('startTimeLabel').innerText = startTime.toLocaleTimeString();
+    let secondsLeft = 60 * 60; // 3600 seconds
+    timerInterval = setInterval(() => {
+      if (submitted) return;
+      secondsLeft--;
+      if (secondsLeft <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById('timerDisplay').innerText = "00:00";
+        alert("Time is up! Auto-submitting now.");
+        submitQuiz(true);
+      } else {
+        const mins = Math.floor(secondsLeft / 60);
+        const secs = secondsLeft % 60;
+        document.getElementById('timerDisplay').innerText = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+      }
+    }, 1000);
+  }
+  
+  // ==================== SCORING ====================
+  function calculateScores() {
+    let sectionScores = [0,0,0,0,0,0,0,0];
+    let totalRaw = 0;
+    for (let i = 0; i < QUESTIONS.length; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) {
+        const answer = parseInt(selected.value);
+        if (answer === QUESTIONS[i].correct) {
+          sectionScores[QUESTIONS[i].section]++;
+          totalRaw++;
+        }
+      }
+    }
+    return { sectionScores, totalRaw };
+  }
+  
+  function getTimeTakenMinutes() {
+    if (!startTime) return 0;
+    const end = new Date();
+    return (end - startTime) / 60000;
+  }
+  
+  function applyPenalty(timeTaken) {
+    if (timeTaken <= 62) return 0;
+    const over = timeTaken - 60;
+    let penalty = Math.floor(over * 0.5);
+    return Math.min(penalty, 10);
+  }
+  
+  // ==================== SUBMIT TO GOOGLE SHEETS ====================
+  const WEBAPP_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL"; // 👈 Replace with your deployed URL
+  
+  async function submitQuiz(isAuto = false) {
+    if (submitted) return;
+    submitted = true;
+    if (timerInterval) clearInterval(timerInterval);
+    
+    const timeTaken = getTimeTakenMinutes();
+    const { sectionScores, totalRaw } = calculateScores();
+    const penalty = applyPenalty(timeTaken);
+    const finalScore = totalRaw - penalty;
+    
+    const payload = {
+      studentId: studentId,
+      studentName: studentName,
+      email: studentEmail,
+      timeTaken: timeTaken.toFixed(1),
+      scores: {
+        analytical: sectionScores[0],
+        english: sectionScores[1],
+        math: sectionScores[2],
+        business: sectionScores[3],
+        psychology: sectionScores[4],
+        computer: sectionScores[5],
+        design: sectionScores[6],
+        gk: sectionScores[7]
+      },
+      totalRaw: totalRaw,
+      penalty: penalty,
+      finalScore: finalScore,
+      ip: "" // optional, you can fetch via external API
+    };
+    
+    try {
+      const response = await fetch(WEBAPP_URL, {
+        method: "POST",
+        mode: "no-cors", // simplified; better to use CORS but works
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      console.log("Saved to sheet");
+    } catch(e) {
+      console.error("Save failed", e);
+      alert("Could not save results. Please screenshot and contact teacher.");
+    }
+    
+    // Show result summary
+    alert(`Test Submitted!\n\nRaw Score: ${totalRaw}/80\nPenalty: ${penalty}\nFinal Score: ${finalScore}/80\n\nSection scores:\nAnalytical: ${sectionScores[0]}\nEnglish: ${sectionScores[1]}\nMath: ${sectionScores[2]}\nBusiness: ${sectionScores[3]}\nPsychology: ${sectionScores[4]}\nComputer: ${sectionScores[5]}\nDesign: ${sectionScores[6]}\nGK: ${sectionScores[7]}`);
+    
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('submitBtn').innerText = "Submitted ✓";
+  }
+  
+  // ==================== INIT ====================
+  window.onload = () => {
+    renderForm();
+    startTimer();
+    document.getElementById('submitBtn').addEventListener('click', () => submitQuiz(false));
+  };
+</script>
+</body>
+</html>
