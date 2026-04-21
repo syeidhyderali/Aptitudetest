@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admission Aptitude Test | 80 MCQs | 60 min</title>
   <style>
+    /* Animated gradient background - Deep Blue, Purple, Pink Fusion + Dissolve */
+body {
+  background: linear-gradient(270deg, #0a0f2a, #2a1a4a, #5e2a6e, #d45c8c, #2a1a4a, #0a0f2a);
+  background-size: 400% 400%;
+  animation: dissolveShift 15s ease infinite;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+@keyframes dissolveShift {
+  0% { background-position: 0% 50%; opacity: 0.95; }
+  25% { background-position: 50% 50%; opacity: 1; }
+  50% { background-position: 100% 50%; opacity: 0.9; }
+  75% { background-position: 50% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.95; }
+}
+
+/* Make the quiz container slightly translucent so background shows through */
+.container {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(2px);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
