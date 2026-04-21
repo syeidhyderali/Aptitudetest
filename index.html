@@ -301,8 +301,33 @@
 
   // ========== GLOBALS ==========
   let startTime = null, timerInterval = null, quizActive = false, submitted = false;
-  const WEBAPP_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL"; // Replace with your actual URL
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbykQOBxb2QxO4Hap99SbzlO4t4fhdP3QWoBf6KSoYl3cvmto5RXXuxcmeoNxUYBy1T5/exec"; // 
 
+  // ========== PREVENT REFRESH / CLOSE ==========
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('quizActive') === 'true') {
+    sessionStorage.removeItem('quizActive');
+    alert('The test was interrupted because the page was reloaded or closed. Please restart the test from your email link.');
+    window.location.href = window.location.pathname;
+  }
+});
+
+window.addEventListener('beforeunload', (e) => {
+  if (quizActive && !submitted) {
+    const message = '⚠️ You are about to leave the test. Your progress will be lost if you do not submit. Are you sure?';
+    e.preventDefault();
+    e.returnValue = message;
+    return message;
+  }
+});
+
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', () => {
+  if (quizActive && !submitted) {
+    alert('You cannot go back during the test. Please continue with the test.');
+    history.pushState(null, null, location.href);
+  }
+});
   const preQuizDiv = document.getElementById('preQuizSection');
   const quizAreaDiv = document.getElementById('quizArea');
   const thankyouDiv = document.getElementById('thankyouMessage');
@@ -397,6 +422,7 @@
   }
 
   async function submitQuiz(isAuto = false) {
+    sessionStorage.removeItem('quizActive');
     if (submitted) return;
     submitted = true;
     quizActive = false;
@@ -464,6 +490,7 @@
     renderQuizForm();
     quizStudentInfoSpan.innerHTML = `<span>🧑‍🎓 ${name}</span> <span>📧 ${email}</span> <span>👩‍🏫 ${counselor}</span>`;
     quizActive = true;
+    sessionStorage.setItem('quizActive', 'true');
     startTimer();
   }
 
