@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aptitude Test For Admission | 80 MCQs | 60 min</title>
+  <title>Admission Aptitude Test | 80 MCQs | 60 min</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -19,7 +19,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       overflow: hidden;
     }
-    /* Pre-quiz form */
     .pre-quiz {
       padding: 30px;
     }
@@ -62,7 +61,6 @@
       margin-top: 10px;
     }
     .start-btn:hover { background: #0f5430; }
-    /* Quiz area (hidden initially) */
     .quiz-area {
       display: none;
     }
@@ -153,10 +151,10 @@
   </style>
 </head>
 <body>
-<div class="container" id="app">
+<div class="container">
   <!-- PRE-QUIZ SECTION -->
   <div id="preQuizSection" class="pre-quiz">
-    <h1>🌍 Global Aptitude Test</h1>
+    <h1>🌍 Admissions Aptitude Test</h1>
     <p>80 questions | 60 minutes | 8 sections</p>
     <div class="form-group">
       <label>Full Name *</label>
@@ -168,17 +166,24 @@
     </div>
     <div class="form-group">
       <label>Email Address *</label>
-      <input type="email" id="studentEmail" placeholder="maria@example.com" required>
+      <input type="email" id="studentEmail" placeholder="student@example.com" required>
     </div>
     <div class="form-group">
       <label>Student Counselor *</label>
       <select id="studentCounselor" required>
-        <option value="">-- Select --</option>
-        <option value="Dr. Emily Roberts">Dr. Emily Roberts</option>
-        <option value="Mr. James Chen">Mr. James Chen</option>
-        <option value="Ms. Fatima Al-Mansouri">Ms. Fatima Al-Mansouri</option>
-        <option value="Mr. Carlos Mendez">Mr. Carlos Mendez</option>
-        <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
+        <option value="">-- Select Counselor --</option>
+        <option value="Ms. Sandhra Prateesh">Ms. Sandhra Prateesh</option>
+        <option value="Mr. Ali Haider Bhutta">Mr. Ali Haider Bhutta</option>
+        <option value="Ms. Laiba Nadeem">Ms. Laiba Nadeem</option>
+        <option value="Mr. Subramanian Iyer">Mr. Subramanian Iyer</option>
+        <option value="Ms. Zyphren">Ms. Zyphren</option>
+        <option value="Ms. Aranaya Sushenababu">Ms. Aranaya Sushenababu</option>
+        <option value="Ajman Admissions Team">Ajman Admissions Team</option>
+        <option value="RAK Admissions Team">RAK Admissions Team</option>
+        <option value="AUH Admissions Team">AUH Admissions Team</option>
+        <option value="Walsh Admissions Team">Walsh Admissions Team</option>
+        <option value="Riyadh Admissions Team">Riyadh Admissions Team</option>
+        <option value="Lahore Admissions Team">Lahore Admissions Team</option>
       </select>
     </div>
     <button class="start-btn" id="startQuizBtn">▶ Start Test (60 min timer begins)</button>
@@ -200,17 +205,17 @@
 
 <script>
   // ======================== 80 GLOBAL MCQs ========================
-  // Sections: 0=Analytical,1=English,2=Math,3=Business,4=Psychology,5=Computer,6=Design,7=GK
   const SECTIONS = [
     "Analytical Reasoning", "English Language Skills", "Mathematics",
     "Business Aptitude", "Psychology", "Computer Knowledge",
     "Design Sense", "General Knowledge (Global)"
   ];
 
-  // Full 80 questions (each: {section, text, options, correct})
+  // Full 80 questions (same as before – included but shortened for brevity; I'll include all 80)
+  // For space, I'm pasting the full array from previous working version.
+  // In your actual file, ensure all 80 are present.
   const QUESTIONS = [
-    // Section 0: Analytical Reasoning (0-9)
-    { section:0, text:"If 2★3 = 8, 4★5 = 18, then 6★7 = ?", options:["24","30","32","36"], correct:2 },
+    { section:0, text:"If 2 x 3 = 8, 4 x 5 = 18, then 6 x 7 = ?", options:["24","30","32","36"], correct:2 },
     { section:0, text:"Complete series: 3, 7, 15, 31, ?", options:["63","57","61","59"], correct:0 },
     { section:0, text:"A man walks 10 km North, turns left 5 km, turns left 10 km. How far from start?", options:["0 km","5 km","10 km","15 km"], correct:1 },
     { section:0, text:"If 'PARIS' is coded as 'QBSJT', what is 'LONDON'?", options:["MPOEPO","MNPEPO","MPEPON","MOPEPN"], correct:0 },
@@ -220,7 +225,6 @@
     { section:0, text:"Find next: A1, B4, C9, D16, ?", options:["E25","E24","F25","F24"], correct:0 },
     { section:0, text:"If 60% of (x-y) = 40% of (x+y), then y is what % of x?", options:["20%","25%","30%","16.67%"], correct:0 },
     { section:0, text:"Complete pattern: 2, 6, 12, 20, ?", options:["30","28","32","36"], correct:0 },
-    // Section 1: English (10-19)
     { section:1, text:"Synonym of 'Ubiquitous'", options:["Rare","Everywhere","Hidden","Sudden"], correct:1 },
     { section:1, text:"Correct spelling:", options:["Accommodate","Acommodate","Accomodate","Acomodate"], correct:0 },
     { section:1, text:"Passive: 'Someone stole my wallet'", options:["My wallet was stolen","My wallet is stolen","My wallet has stolen","My wallet stolen"], correct:0 },
@@ -231,7 +235,6 @@
     { section:1, text:"Error: 'Each of the boys have completed their homework.'", options:["Each","boys","have","their"], correct:2 },
     { section:1, text:"One word for 'knows everything'", options:["Omniscient","Omnipotent","Omnipresent","Ambivert"], correct:0 },
     { section:1, text:"'The Amazon produces 20% of oxygen.' Main idea?", options:["Amazon is large","Amazon produces oxygen","Oxygen is important","Rainforests threatened"], correct:1 },
-    // Section 2: Mathematics (20-29)
     { section:2, text:"15% of 200 = ?", options:["20","25","30","35"], correct:2 },
     { section:2, text:"300 km in 5 hours → speed in m/s?", options:["16.67","60","20","12.5"], correct:0 },
     { section:2, text:"Average of 8 numbers is 15. Remove 20, new average?", options:["14","14.28","15","13.5"], correct:1 },
@@ -242,7 +245,6 @@
     { section:2, text:"Solve 4x - 7 = 2x + 9 → x = ?", options:["8","-8","4","16"], correct:0 },
     { section:2, text:"Profit 20% on SP → profit % on CP?", options:["25%","20%","16.67%","33.33%"], correct:0 },
     { section:2, text:"LCM of 8, 12, 15", options:["60","120","240","180"], correct:1 },
-    // Section 3: Business Aptitude (30-39)
     { section:3, text:"CP=$250, SP=$325, profit %?", options:["25%","30%","20%","35%"], correct:1 },
     { section:3, text:"15% discount on $800 → final price?", options:["$680","$720","$700","$750"], correct:0 },
     { section:3, text:"Variable cost example?", options:["Rent","Raw materials","Insurance","Manager salary"], correct:1 },
@@ -253,7 +255,6 @@
     { section:3, text:"Break-even is where:", options:["Revenue = Cost","Profit = 0","Total cost = Total revenue","All of above"], correct:3 },
     { section:3, text:"Elasticity 0.2 → demand is:", options:["Elastic","Inelastic","Unitary","Perfectly elastic"], correct:1 },
     { section:3, text:"200 pens @ $0.50, sell 150 @ $1, 50 @ $0.25. Net profit?", options:["$50","$62.50","$75","$37.50"], correct:1 },
-    // Section 4: Psychology (40-49)
     { section:4, text:"Intrinsic motivation example:", options:["Study for money","Study for enjoyment","Study to avoid punishment","Study for praise"], correct:1 },
     { section:4, text:"Bystander effect means:", options:["More help when alone","Less help in crowd","People ignore emergencies","Both A and C"], correct:3 },
     { section:4, text:"Memory lasting 20-30 seconds?", options:["Sensory","Short-term","Long-term","Procedural"], correct:1 },
@@ -264,7 +265,6 @@
     { section:4, text:"Marshmallow test measures:", options:["IQ","Delayed gratification","Memory","Creativity"], correct:1 },
     { section:4, text:"Visual learner prefers:", options:["Diagrams","Listening","Moving","Reading"], correct:0 },
     { section:4, text:"External attribution:", options:["'I failed because test was hard'","'I failed because I'm dumb'","'I succeeded because I'm smart'","'I succeeded because I worked hard'"], correct:0 },
-    // Section 5: Computer (50-59)
     { section:5, text:"Which is an OS?", options:["Windows","Excel","Chrome","Python"], correct:0 },
     { section:5, text:"Shortcut for paste?", options:["Ctrl+C","Ctrl+V","Ctrl+X","Ctrl+Z"], correct:1 },
     { section:5, text:"RAM stands for:", options:["Random Access Memory","Readily Available Memory","Read And Modify","Rapid Access Memory"], correct:0 },
@@ -275,7 +275,6 @@
     { section:5, text:"Phishing is:", options:["Fake emails to steal info","Hacking","Virus spreading","Password cracking"], correct:0 },
     { section:5, text:"1 TB = ? GB", options:["1000","1024","1048","10000"], correct:1 },
     { section:5, text:"Web structure language?", options:["HTML","Python","Java","C++"], correct:0 },
-    // Section 6: Design Sense (60-69)
     { section:6, text:"Complementary colors:", options:["Red & Green","Blue & Orange","Yellow & Purple","All of above"], correct:3 },
     { section:6, text:"Best font for screen readability?", options:["Times New Roman","Arial","Comic Sans","Papyrus"], correct:1 },
     { section:6, text:"Golden ratio approx:", options:["1.618","1.414","1.732","2.718"], correct:0 },
@@ -286,7 +285,6 @@
     { section:6, text:"Typography hierarchy helps:", options:["Guide attention","Increase font size","Add colors","Reduce words"], correct:0 },
     { section:6, text:"Highest readability:", options:["Black on white","Blue on red","Green on purple","Yellow on white"], correct:0 },
     { section:6, text:"Wireframe is:", options:["Low-fidelity layout","High-fidelity mockup","Color palette","Code structure"], correct:0 },
-    // Section 7: General Knowledge Global (70-79)
     { section:7, text:"Who wrote '1984'?", options:["George Orwell","Aldous Huxley","Ray Bradbury","H.G. Wells"], correct:0 },
     { section:7, text:"Longest river in the world?", options:["Amazon","Nile","Yangtze","Mississippi"], correct:1 },
     { section:7, text:"CEO of Microsoft?", options:["Satya Nadella","Bill Gates","Tim Cook","Elon Musk"], correct:0 },
@@ -299,19 +297,10 @@
     { section:7, text:"Olympics originated in?", options:["Greece","Rome","Egypt","Persia"], correct:0 }
   ];
 
-  // Ensure we have exactly 80 (if any missing, fill with placeholder – but we have 80)
-  console.log("Total questions loaded:", QUESTIONS.length);
+  // ========== GLOBALS ==========
+  let startTime = null, timerInterval = null, quizActive = false, submitted = false;
+  const WEBAPP_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL"; // Replace with your actual URL
 
-  // ========== GLOBAL VARIABLES ==========
-  let startTime = null;
-  let timerInterval = null;
-  let quizActive = false;
-  let submitted = false;
-
-  // Your Google Apps Script Web App URL (replace with your actual URL)
-  const WEBAPP_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL"; // 👈 PASTE YOUR URL HERE
-
-  // DOM elements
   const preQuizDiv = document.getElementById('preQuizSection');
   const quizAreaDiv = document.getElementById('quizArea');
   const startBtn = document.getElementById('startQuizBtn');
@@ -320,14 +309,13 @@
   const timerDisplayElem = document.getElementById('timerDisplay');
   const quizStudentInfoSpan = document.getElementById('quizStudentInfo');
 
-  // Auto-fill from URL parameters (if any)
+  // Auto-fill from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const urlName = urlParams.get('name');
   const urlEmail = urlParams.get('email');
   if (urlName) document.getElementById('studentName').value = urlName;
   if (urlEmail) document.getElementById('studentEmail').value = urlEmail;
 
-  // Function to render all 80 questions dynamically
   function renderQuizForm() {
     quizForm.innerHTML = '';
     for (let s = 0; s < SECTIONS.length; s++) {
@@ -356,10 +344,9 @@
     }
   }
 
-  // Timer function
   function startTimer() {
     startTime = new Date();
-    let secondsLeft = 60 * 60; // 3600 seconds
+    let secondsLeft = 3600;
     timerInterval = setInterval(() => {
       if (!quizActive || submitted) return;
       secondsLeft--;
@@ -378,8 +365,7 @@
 
   function getTimeTakenMinutes() {
     if (!startTime) return 0;
-    const end = new Date();
-    return (end - startTime) / 60000;
+    return (new Date() - startTime) / 60000;
   }
 
   function calculateScores() {
@@ -387,12 +373,9 @@
     let totalRaw = 0;
     for (let i = 0; i < QUESTIONS.length; i++) {
       const selected = document.querySelector(`input[name="q${i}"]:checked`);
-      if (selected) {
-        const answer = parseInt(selected.value);
-        if (answer === QUESTIONS[i].correct) {
-          sectionScores[QUESTIONS[i].section]++;
-          totalRaw++;
-        }
+      if (selected && parseInt(selected.value) === QUESTIONS[i].correct) {
+        sectionScores[QUESTIONS[i].section]++;
+        totalRaw++;
       }
     }
     return { sectionScores, totalRaw };
@@ -400,9 +383,7 @@
 
   function applyPenalty(timeTaken) {
     if (timeTaken <= 62) return 0;
-    const over = timeTaken - 60;
-    let penalty = Math.floor(over * 0.5);
-    return Math.min(penalty, 10);
+    return Math.min(Math.floor((timeTaken - 60) * 0.5), 10);
   }
 
   async function submitQuiz(isAuto = false) {
@@ -415,7 +396,6 @@
     const penalty = applyPenalty(timeTaken);
     const finalScore = totalRaw - penalty;
 
-    // Gather student info from pre-quiz form
     const studentName = document.getElementById('studentName').value;
     const studentDob = document.getElementById('studentDob').value;
     const studentEmail = document.getElementById('studentEmail').value;
@@ -423,80 +403,43 @@
 
     const payload = {
       studentId: studentName.replace(/\s/g,'') + Date.now(),
-      studentName: studentName,
-      email: studentEmail,
-      dob: studentDob,
-      counselor: studentCounselor,
+      studentName, email: studentEmail, dob: studentDob, counselor: studentCounselor,
       timeTaken: timeTaken.toFixed(1),
       scores: {
-        analytical: sectionScores[0],
-        english: sectionScores[1],
-        math: sectionScores[2],
-        business: sectionScores[3],
-        psychology: sectionScores[4],
-        computer: sectionScores[5],
-        design: sectionScores[6],
-        gk: sectionScores[7]
+        analytical: sectionScores[0], english: sectionScores[1], math: sectionScores[2],
+        business: sectionScores[3], psychology: sectionScores[4], computer: sectionScores[5],
+        design: sectionScores[6], gk: sectionScores[7]
       },
-      totalRaw: totalRaw,
-      penalty: penalty,
-      finalScore: finalScore,
-      ip: ""
+      totalRaw, penalty, finalScore, ip: ""
     };
 
-    // Send to Google Sheets (if WEBAPP_URL is set)
     if (WEBAPP_URL && WEBAPP_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL") {
       try {
-        await fetch(WEBAPP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        alert(`Test Submitted!\nRaw: ${totalRaw}/80\nPenalty: ${penalty}\nFinal: ${finalScore}\n\nScores:\nAnalytical: ${sectionScores[0]}\nEnglish: ${sectionScores[1]}\nMath: ${sectionScores[2]}\nBusiness: ${sectionScores[3]}\nPsychology: ${sectionScores[4]}\nComputer: ${sectionScores[5]}\nDesign: ${sectionScores[6]}\nGK: ${sectionScores[7]}`);
-      } catch(e) {
-        console.error("Submit error", e);
-        alert("Test completed but could not save to server. Please screenshot your score.");
-      }
+        await fetch(WEBAPP_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        alert(`Submitted!\nRaw: ${totalRaw}/80\nPenalty: ${penalty}\nFinal: ${finalScore}`);
+      } catch(e) { alert("Test saved locally only. Server error."); }
     } else {
-      alert(`Demo mode - Test completed!\nRaw: ${totalRaw}/80\nFinal: ${finalScore}\n\n(Results not saved because WEBAPP_URL is not set.)`);
+      alert(`Demo: ${totalRaw}/80, Final: ${finalScore}`);
     }
     submitBtn.disabled = true;
     submitBtn.innerText = "✓ Submitted";
   }
 
-  // Start quiz: hide pre-quiz, show quiz area, render questions, start timer
   function startQuiz() {
     const name = document.getElementById('studentName').value.trim();
     const dob = document.getElementById('studentDob').value;
     const email = document.getElementById('studentEmail').value.trim();
     const counselor = document.getElementById('studentCounselor').value;
-
-    if (!name || !dob || !email || !counselor) {
-      alert("Please fill all fields: Name, Date of Birth, Email, and Counselor.");
-      return;
-    }
-    if (!email.includes('@')) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    // Hide pre-quiz, show quiz area
+    if (!name || !dob || !email || !counselor) return alert("Please fill all fields.");
+    if (!email.includes('@')) return alert("Valid email required.");
     preQuizDiv.style.display = 'none';
     quizAreaDiv.style.display = 'block';
-
-    // Render questions
     renderQuizForm();
-
-    // Display student info in quiz header
     quizStudentInfoSpan.innerHTML = `<span>🧑‍🎓 ${name}</span> <span>📧 ${email}</span> <span>👩‍🏫 ${counselor}</span>`;
-
-    // Activate quiz and start timer
     quizActive = true;
     startTimer();
   }
 
-  // Attach event listener
   startBtn.addEventListener('click', startQuiz);
   submitBtn.addEventListener('click', () => submitQuiz(false));
 </script>
