@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admissions Aptitude Test | 80 MCQs | 60 min</title>
   <style>
+    /* Sticky header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1a3c5e;
+}
+.student-info-bar {
+  position: sticky;
+  top: 80px; /* adjust based on header height */
+  z-index: 99;
+  background: #e9edf2;
+}
+.progress-bar-container {
+  position: sticky;
+  top: 130px; /* adjust as needed */
+  z-index: 98;
+  background: #f9fafc;
+}
+/* Hide smileys, show text */
+.quiz-student-text {
+  font-weight: normal;
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -183,6 +206,11 @@
       <div class="timer" id="timerDisplay">60:00</div>
     </div>
     <div class="student-info-bar" id="quizStudentInfo"></div>
+    <!-- Progress Bar -->
+<div class="progress-bar-container" id="progressBarContainer" style="display: none; background: #f0f0f0; padding: 10px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #ccc;">
+  <span style="font-weight: bold; margin-right: 10px;">Jump to Q:</span>
+  <div id="questionNavButtons" style="display: inline-block;"></div>
+</div>
     <form id="quizForm"></form>
     <button class="submit-btn" id="submitQuizBtn">📤 Submit Test</button>
     <footer>Do not refresh. Timer auto‑submits at 0:00.</footer>
@@ -488,7 +516,36 @@ window.addEventListener('popstate', () => {
     preQuizDiv.style.display = 'none';
     quizAreaDiv.style.display = 'block';
     renderQuizForm();
-    quizStudentInfoSpan.innerHTML = `<span>🧑‍🎓 ${name}</span> <span>📧 ${email}</span> <span>👩‍🏫 ${counselor}</span>`;
+generateNavButtons();
+    function generateNavButtons() {
+  const navDiv = document.getElementById('questionNavButtons');
+  if (!navDiv) return;
+  navDiv.innerHTML = '';
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i+1;
+    btn.style.margin = '2px';
+    btn.style.padding = '4px 8px';
+    btn.style.borderRadius = '20px';
+    btn.style.border = '1px solid #1a3c5e';
+    btn.style.background = 'white';
+    btn.style.cursor = 'pointer';
+    btn.addEventListener('click', () => {
+      const targetQuestion = document.querySelector(`.question`).parentElement; // better: scroll to specific question
+      const questionDivs = document.querySelectorAll('.question');
+      if (questionDivs[i]) {
+        questionDivs[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+    navDiv.appendChild(btn);
+  }
+  document.getElementById('progressBarContainer').style.display = 'block';
+}
+    quizStudentInfoSpan.innerHTML = `
+  <span><strong>Student Name:</strong> ${name}</span> |
+  <span><strong>Email:</strong> ${email}</span> |
+  <span><strong>Counsellor:</strong> ${counselor}</span>
+`;
     quizActive = true;
     sessionStorage.setItem('quizActive', 'true');
     startTimer();
