@@ -29,6 +29,14 @@
   font-weight: normal;
 }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name');
+  const email = params.get('email');
+  if (name) document.getElementById('studentName') && (document.getElementById('studentName').value = name);
+  if (email) document.getElementById('studentEmail') && (document.getElementById('studentEmail').value = email);
+});
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #eef2f7;
